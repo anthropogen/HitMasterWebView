@@ -14,6 +14,7 @@ namespace Bootstrapper.Data
     public List<LevelDto> levels = new();
   }
 
+  [System.Serializable]
   public class LevelDto
   {
     public int num;

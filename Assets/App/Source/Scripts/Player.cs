@@ -18,4 +18,10 @@ public class Player : MonoBehaviour
     gameObject.SetActive(false);
     Dead?.Invoke();
   }
+
+  public void Warp(Vector3 pos)
+  {
+    isDead = false;
+    PathMover.Warp(pos);
+  }
 }

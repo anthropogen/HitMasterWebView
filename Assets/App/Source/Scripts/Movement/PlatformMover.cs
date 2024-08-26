@@ -25,6 +25,7 @@ public class PlatformMover : MonoBehaviour
 
   public void Init(LevelConfig lvl, Player player)
   {
+    currentPlatform = 0;
     this.player = player;
     levelConfig = lvl;
     platforms = levelConfig.Platforms;

@@ -6,28 +6,40 @@ public class MenuScreen : Screen
   [SerializeField] private MenuSystem menuSystem;
   [SerializeField] private SettingsPopup settingsPopup;
   [SerializeField] private MainMenuPopup mainPopup;
+  [SerializeField] private LevelsPopup levelsPopup;
 
-  protected override void Subscribe()
+  public void Init()
   {
-    settingsPopup.Init(SetMain);
+    settingsPopup.Init(OpenMain);
     mainPopup.Init(menuSystem, this);
+    levelsPopup.Init(menuSystem, this);
   }
 
   public override void Open()
   {
     base.Open();
-    SetMain();
+    OpenMain();
   }
 
   public void OpenSettings()
   {
     mainPopup.gameObject.SetActive(false);
     settingsPopup.gameObject.SetActive(true);
+    levelsPopup.gameObject.SetActive(false);
   }
 
-  private void SetMain()
+  public void OpenMain()
   {
     mainPopup.gameObject.SetActive(true);
     settingsPopup.gameObject.SetActive(false);
+    levelsPopup.gameObject.SetActive(false);
+  }
+
+  public void OpenLevels()
+  {
+    mainPopup.gameObject.SetActive(false);
+    settingsPopup.gameObject.SetActive(false);
+    levelsPopup.gameObject.SetActive(true);
+    levelsPopup.UpdateState();
   }
 }
